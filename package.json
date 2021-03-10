@@ -10,7 +10,12 @@
     "node-fetch": "^2.6.1",
     "react": "^16.14.0",
     "react-dom": "^17.0.1",
-    "react-scripts": "1.0.0"
+    "react-isolated-scroll": "^0.1.1",
+    "react-native": "^0.63.4",
+    "react-scripts": "1.0.0",
+    "react-scroll-lock-component": "^1.2.0",
+    "react-scroll-sync": "^0.8.0",
+    "react-scrolllock": "^5.0.1"
   },
   "name": "z3tpv",
   "description": null,

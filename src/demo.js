@@ -20,37 +20,54 @@ const priorityData = [
 
 export default class Demo extends React.PureComponent {
   componentDidMount() {
+      this.updateWindowDimensions();
+      window.addEventListener('resize', this.updateWindowDimensions);
     fetch("https://climbcalendar.herokuapp.com/api")
         .then(function(response){
           return response.text()
         })
         .then(function(xdata) {
-          let result = JSON.parse(xdata).map(function(R,I){
-            let gym = 0
-            let end = moment(R.ts,"YYYYMMDDHHmm").add(165,"minutes").format()
-            if(R.gym==='OYY'){
-              end = moment(R.ts,"YYYYMMDDHHmm").add(2,"hours").format()
-            }
-            switch (R.gym) {
-              case 'BW': gym = 1; break;
-              case 'BFF': gym = 2; break;
-              case 'OYY': gym = 3; break;
-              case 'LHC': gym = 4; break;
-              case 'FB': gym = 5; break;
-            }
-            return({
-              title: R.slots +" slots",
-              priorityId: gym,
-              startDate: moment(R.ts,"YYYYMMDDHHmm").format(),
-              endDate: end,
-              id: I,
-            })
-          })
+            let result = JSON.parse(xdata).map(function(R,I){
+                let gym = 0
+                let end = moment(R.ts,"YYYYMMDDHHmm").add(165,"minutes").format()
+                if(R.gym==='OYY'){
+                 end = moment(R.ts,"YYYYMMDDHHmm").add(2,"hours").format()
+                }
+                switch (R.gym) {
+                    case 'BW': gym = 1; break;
+                    case 'BFF': gym = 2; break;
+                    case 'OYY': gym = 3; break;
+                    case 'LHC': gym = 4; break;
+                    case 'FB': gym = 5; break;
+                    default: gym = 6; break
+                }
+                return({
+                    title: R.slots +" slots",
+                    priorityId: gym,
+                    startDate: moment(R.ts,"YYYYMMDDHHmm").format(),
+                    endDate: end,
+                    id: I,
+                })
+            });
+          result = result.filter(R => moment(R.endDate).format('YYYYMMDDHHmm') >= moment().format('YYYYMMDDHHmm'))
           return(result)
         })
-        .then(data => this.setState({ data }));
-    //console.table(R)
+        .then(res => {
+            this.setState({
+                data: res,
+                today: moment(res[0].startDate).format('YYYY-MM-DD'),
+                week: [0,1,2,3,4,5,6].filter(D => D!==moment(res[0].startDate).weekday())
+            })
+        })
   }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions() {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
 
 
   constructor(props) {
@@ -58,10 +75,13 @@ export default class Demo extends React.PureComponent {
 
     this.handleChange = this.handleChange.bind(this);
     this.prevdate = this.prevdate.bind(this);
-      this.nextdate = this.nextdate.bind(this);
+    this.nextdate = this.nextdate.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 
     this.state = {
       i_agree: false,
+        width: 0,
+        height: 0,
       today: moment().format('YYYY-MM-DD'),
       week: [0,1,2,3,4,5,6].filter(D => D!==moment().weekday()),
       data: R,
@@ -104,11 +124,13 @@ export default class Demo extends React.PureComponent {
     } = this.state;
     const mystyle = {
       display:"flex",
-      flexDirection:"row",
+      flexDirection:"row"
     };
     const buttons = {
       display:"flex",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        height: this.state.height*0.06,
+        width: this.state.width*0.9
 
     }
     const btnstyle = {
@@ -136,7 +158,7 @@ export default class Demo extends React.PureComponent {
                   <br/>
                   <div style={buttons}>
                       <label>
-                          <button onClick={this.handleChange} style={{fontSize:30}}>Daily View</button>
+                          <button onClick={this.handleChange} style={{fontSize:30}}>Go To Daily View</button>
                       </label>
                   </div>
                   <br/>
@@ -345,22 +367,21 @@ export default class Demo extends React.PureComponent {
                   <br/>
                   <div style={buttons}>
                       <label>
-                          <text onClick={this.prevdate} style={btnstyle}> &#8592; </text>
+                          <text onClick={this.prevdate} style={btnstyle}> &#8592; {moment().add(-1,"days").format("DD MMM YYYY")}</text>
                       </label>
                       <label>
-                          <button onClick={this.handleChange} style={{fontSize:30}}>Weekly View</button>
+                          <button onClick={this.handleChange} style={{fontSize:30}}>Go To Weekly View</button>
                       </label>
                       <label>
-                          <text onClick={this.nextdate} style={btnstyle}> &#8594; </text>
+                          <text onClick={this.nextdate} style={btnstyle}>{moment().add(1,"days").format("DD MMM YYYY")} &#8594; </text>
                       </label>
                   </div>
-                  <br/>
-                  <br/>
                   <Paper>
                       <div style={mystyle}>
+
                           <Scheduler
                               data={data}
-                              height={1600}
+                              height={this.state.height*0.9}
                           >
                               <ViewState
                                   currentDate={today}
@@ -374,7 +395,9 @@ export default class Demo extends React.PureComponent {
                                   endDayHour={23}
                                   excludedDays={week}
                               />
+
                               <Appointments />
+
                               <Resources
                                   data={resources}
                                   mainResourceName="priorityId"
