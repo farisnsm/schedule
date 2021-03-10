@@ -130,11 +130,9 @@ export default class Demo extends React.PureComponent {
       display:"flex",
         justifyContent: "space-around",
         height: this.state.height*0.06,
-        width: this.state.width*0.9
+        width: this.state.width*0.9,
+        fontSize: 30
 
-    }
-    const btnstyle = {
-        fontSize:40
     }
     var d1 = [0,1,2,3,4,5,6].filter(D => D!==moment().weekday());
     var d2 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(1,"days").weekday());
@@ -158,7 +156,7 @@ export default class Demo extends React.PureComponent {
                   <br/>
                   <div style={buttons}>
                       <label>
-                          <button onClick={this.handleChange} style={{fontSize:30}}>Go To Daily View</button>
+                          <button onClick={this.handleChange}>Go To Daily View</button>
                       </label>
                   </div>
                   <br/>
@@ -367,13 +365,13 @@ export default class Demo extends React.PureComponent {
                   <br/>
                   <div style={buttons}>
                       <label>
-                          <text onClick={this.prevdate} style={btnstyle}> &#8592; {moment().add(-1,"days").format("DD MMM YYYY")}</text>
+                          <text onClick={this.prevdate}> &#8592; {moment().add(-1,"days").format("DD MMM YYYY")}</text>
                       </label>
                       <label>
-                          <button onClick={this.handleChange} style={{fontSize:30}}>Go To Weekly View</button>
+                          <button onClick={this.handleChange}>Go To Weekly View</button>
                       </label>
                       <label>
-                          <text onClick={this.nextdate} style={btnstyle}>{moment().add(1,"days").format("DD MMM YYYY")} &#8594; </text>
+                          <text onClick={this.nextdate}>{moment().add(1,"days").format("DD MMM YYYY")} &#8594; </text>
                       </label>
                   </div>
                   <Paper>
