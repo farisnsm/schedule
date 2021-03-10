@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99014f8b-2d7d-4324-9af2-309867e65ad3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/demo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/demo.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,13 +16,21 @@
       <file leaf-file-name="demo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="-46">
+              <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
                 <element signature="e#520#722#0" />
                 <element signature="e#891#935#0" />
                 <element signature="e#967#1765#0" />
+                <element signature="e#4575#5671#0" />
+                <element signature="e#5700#6796#0" />
+                <element signature="e#6825#7921#0" />
+                <element signature="e#7950#9046#0" />
+                <element signature="e#9075#10171#0" />
+                <element signature="e#10200#11296#0" />
+                <element signature="e#11325#12421#0" />
+                <element signature="e#12450#13546#0" />
               </folding>
             </state>
           </provider>
@@ -32,8 +39,8 @@
       <file leaf-file-name="dx-react-scheduler.d.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/@devexpress/dx-react-scheduler/dist/dx-react-scheduler.d.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5083">
-              <caret line="217" column="47" lean-forward="true" selection-start-line="217" selection-start-column="47" selection-end-line="217" selection-end-column="47" />
+            <state relative-caret-position="240">
+              <caret line="208" column="10" lean-forward="true" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -110,32 +117,6 @@
             <path>
               <item name="schedule" type="b2602c69:ProjectViewProjectNode" />
               <item name="schedule" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schedule" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schedule" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@devexpress" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schedule" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@devexpress" type="462c0819:PsiDirectoryNode" />
-              <item name="dx-react-scheduler" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="schedule" type="b2602c69:ProjectViewProjectNode" />
-              <item name="schedule" type="462c0819:PsiDirectoryNode" />
-              <item name="node_modules" type="462c0819:PsiDirectoryNode" />
-              <item name="@devexpress" type="462c0819:PsiDirectoryNode" />
-              <item name="dx-react-scheduler" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="schedule" type="b2602c69:ProjectViewProjectNode" />
@@ -251,12 +232,12 @@
       <updated>1615196595098</updated>
       <workItem from="1615196598067" duration="3308000" />
       <workItem from="1615211585666" duration="14215000" />
-      <workItem from="1615357710001" duration="6591000" />
+      <workItem from="1615357710001" duration="9069000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6591000" />
+    <option name="totallyTimeSpent" value="9069000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -272,11 +253,11 @@
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32943678" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32943678" />
       <window_info id="Capture Tool" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -322,11 +303,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/demo.js</url>
-          <line>82</line>
+          <line>130</line>
           <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -373,8 +355,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/@devexpress/dx-react-scheduler/dist/dx-react-scheduler.d.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5083">
-          <caret line="217" column="47" lean-forward="true" selection-start-line="217" selection-start-column="47" selection-end-line="217" selection-end-column="47" />
+        <state relative-caret-position="240">
+          <caret line="208" column="10" lean-forward="true" selection-start-line="208" selection-start-column="10" selection-end-line="208" selection-end-column="10" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
@@ -383,13 +365,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="88" column="19" lean-forward="true" selection-start-line="88" selection-start-column="19" selection-end-line="88" selection-end-column="19" />
+        <state relative-caret-position="-46">
+          <caret line="110" column="20" selection-start-line="110" selection-start-column="20" selection-end-line="110" selection-end-column="20" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#520#722#0" />
             <element signature="e#891#935#0" />
             <element signature="e#967#1765#0" />
+            <element signature="e#4575#5671#0" />
+            <element signature="e#5700#6796#0" />
+            <element signature="e#6825#7921#0" />
+            <element signature="e#7950#9046#0" />
+            <element signature="e#9075#10171#0" />
+            <element signature="e#10200#11296#0" />
+            <element signature="e#11325#12421#0" />
+            <element signature="e#12450#13546#0" />
           </folding>
         </state>
       </provider>
