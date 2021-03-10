@@ -13,7 +13,7 @@ const fetch = require("node-fetch");
 const moment = require('moment')
 
 
-const isWeekOrMonthView = 'Week';
+const isWeekOrMonthView = viewName => viewName === 'Week' || viewName === 'Month';;
 var R = []
 const priorityData = [
   { text: 'BW', id: 1, color: lightBlue },
@@ -105,22 +105,22 @@ export default class Demo extends React.PureComponent {
       display:"flex",
       flexDirection:"row",
     };
-    var d1 = [0,1,2,3,4,5,6].filter(D => D!==moment().weekday())
-    var d2 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(1,"days").weekday())
-    var d3 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(2,"days").weekday())
-    var d4 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(3,"days").weekday())
-    var d5 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(4,"days").weekday())
-    var d6 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(5,"days").weekday())
-    var d7 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(6,"days").weekday())
-    var d8 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(7,"days").weekday())
-    var w1 = moment().format('YYYY-MM-DD')
-    var w2 = moment().add(1,"days").format('YYYY-MM-DD')
-    var w3 = moment().add(2,"days").format('YYYY-MM-DD')
-    var w4 = moment().add(3,"days").format('YYYY-MM-DD')
-    var w5 = moment().add(4,"days").format('YYYY-MM-DD')
-    var w6 = moment().add(5,"days").format('YYYY-MM-DD')
-    var w7 = moment().add(6,"days").format('YYYY-MM-DD')
-    var w8 = moment().add(7,"days").format('YYYY-MM-DD')
+    var d1 = [0,1,2,3,4,5,6].filter(D => D!==moment().weekday());
+    var d2 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(1,"days").weekday());
+    var d3 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(2,"days").weekday());
+    var d4 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(3,"days").weekday());
+    var d5 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(4,"days").weekday());
+    var d6 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(5,"days").weekday());
+    var d7 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(6,"days").weekday());
+    var d8 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(7,"days").weekday());
+    var w1 = moment().format('YYYY-MM-DD');
+    var w2 = moment().add(1,"days").format('YYYY-MM-DD');
+    var w3 = moment().add(2,"days").format('YYYY-MM-DD');
+    var w4 = moment().add(3,"days").format('YYYY-MM-DD');
+    var w5 = moment().add(4,"days").format('YYYY-MM-DD');
+    var w6 = moment().add(5,"days").format('YYYY-MM-DD');
+    var w7 = moment().add(6,"days").format('YYYY-MM-DD');
+    var w8 = moment().add(7,"days").format('YYYY-MM-DD');
     if(i_agree){
       return (
           <React.Fragment>
@@ -344,6 +344,7 @@ export default class Demo extends React.PureComponent {
             </div>
             <br/>
             <br/>
+              {today}
             <Paper>
               <div style={mystyle}>
                 <Scheduler
