@@ -2,13 +2,7 @@ import * as React from 'react';
 import Paper from '@material-ui/core/Paper';
 import { green, lightBlue, red, pink, orange } from '@material-ui/core/colors';
 import {ViewState, GroupingState, IntegratedGrouping} from '@devexpress/dx-react-scheduler';
-import {
-  Scheduler,
-  Resources,
-  Appointments,
-  GroupingPanel,
-  WeekView
-} from '@devexpress/dx-react-scheduler-material-ui';
+import {Scheduler, Resources, Appointments, GroupingPanel, WeekView} from '@devexpress/dx-react-scheduler-material-ui';
 const fetch = require("node-fetch");
 const moment = require('moment')
 
@@ -90,11 +84,14 @@ export default class Demo extends React.PureComponent {
   }
 
   handleClick(e) {
+    let nw = [0,1,2,3,4,5,6].filter(D => D!==moment(this.state.today,'YYYY-MM-DD').add(1,"days").weekday());
+    let nt = moment(this.state.today,'YYYY-MM-DD').add(1,"days").format('YYYY-MM-DD')
     this.setState({
-      week: [0,1,2,3,4,5,6].filter(D => D!==moment(this.state.today,'YYYY-MM-DD').add(1,"days").weekday()),
-      today: moment(this.state.today,'YYYY-MM-DD').add(1,"days").format('YYYY-MM-DD')
+      week: nw,
+      today: nt
     });
     console.log(this.state.today)
+      console.log(this.state.week)
   }
 
   render() {
@@ -121,260 +118,262 @@ export default class Demo extends React.PureComponent {
     var w6 = moment().add(5,"days").format('YYYY-MM-DD');
     var w7 = moment().add(6,"days").format('YYYY-MM-DD');
     var w8 = moment().add(7,"days").format('YYYY-MM-DD');
-    if(i_agree){
-      return (
-          <React.Fragment>
-            <br/>
-            <div>
-              <label>
-                <button onClick={this.handleChange}>Daily View</button>
-              </label>
-            </div>
-            <br/>
-            <br/>
-            <Paper>
-              <div style={mystyle}>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w1}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d1}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w2}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d2}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w3}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d3}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w4}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d4}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w5}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d5}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w6}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d6}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w7}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d7}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={w8}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={d8}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-              </div>
-            </Paper>
-          </React.Fragment>
-      );
-    }else{
-      return (
-          <React.Fragment>
-            <br/>
-            <div>
-              <label>
-                <button onClick={this.handleChange}>Weekly View</button>
-              </label>
-              <label>
-                <button onClick={this.handleClick}>X</button>
-              </label>
-            </div>
-            <br/>
-            <br/>
-              {today}
-            <Paper>
-              <div style={mystyle}>
-                <Scheduler
-                    data={data}
-                    height={1600}
-                >
-                  <ViewState
-                      defaultCurrentDate={today}
-                  />
-                  <GroupingState
-                      grouping={grouping}
-                      groupByDate={groupByDate}
-                  />
-                  <WeekView
-                      startDayHour={9}
-                      endDayHour={23}
-                      excludedDays={week}
-                  />
-                  <Appointments />
-                  <Resources
-                      data={resources}
-                      mainResourceName="priorityId"
-                  />
-                  <IntegratedGrouping />
-                  <GroupingPanel />
-                </Scheduler>
-              </div>
-            </Paper>
-          </React.Fragment>
-      );
+    if(typeof(today)){
+        if(i_agree){
+            return (
+                <React.Fragment>
+                    <br/>
+                    <div>
+                        <label>
+                            <button onClick={this.handleChange}>Daily View</button>
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    <Paper>
+                        <div style={mystyle}>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w1}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d1}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w2}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d2}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w3}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d3}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w4}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d4}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w5}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d5}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w6}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d6}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w7}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d7}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={w8}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={d8}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                        </div>
+                    </Paper>
+                </React.Fragment>
+            );
+        }else{
+            return (
+                <React.Fragment>
+                    <br/>
+                    <div>
+                        <label>
+                            <button onClick={this.handleChange}>Weekly View</button>
+                        </label>
+                        <label>
+                            <button onClick={this.handleClick}>X</button>
+                        </label>
+                    </div>
+                    <br/>
+                    <br/>
+                    {today}
+                    <Paper>
+                        <div style={mystyle}>
+                            <Scheduler
+                                data={data}
+                                height={1600}
+                            >
+                                <ViewState
+                                    defaultCurrentDate={today}
+                                />
+                                <GroupingState
+                                    grouping={grouping}
+                                    groupByDate={groupByDate}
+                                />
+                                <WeekView
+                                    startDayHour={9}
+                                    endDayHour={23}
+                                    excludedDays={week}
+                                />
+                                <Appointments />
+                                <Resources
+                                    data={resources}
+                                    mainResourceName="priorityId"
+                                />
+                                <IntegratedGrouping />
+                                <GroupingPanel />
+                            </Scheduler>
+                        </div>
+                    </Paper>
+                </React.Fragment>
+            );
+        }
     }
   }
 }
