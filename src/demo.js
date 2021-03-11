@@ -582,11 +582,11 @@ export default class Demo extends React.PureComponent {
                   </div>
               </div>
               <div style={buttons}>
-                  <div style={{width:70}}>
+                  <div style={{width:1}}>
                       {}
                   </div>
                   <text style={{fontSize:"3vmin", fontFamily:'Courier New'}}>&#8592; &#8592; &#8592; Swipe To Navigate Dates &#8594; &#8594; &#8594;</text>
-                  <div style={{width:70}}>
+                  <div style={{width:1}}>
                       {}
                   </div>
               </div>
