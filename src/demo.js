@@ -288,7 +288,7 @@ export default class Demo extends React.PureComponent {
     const buttons = {
       display:"flex",
         flexDirection:"row",
-        justifyContent: "space-between"
+        justifyContent: "space-around"
     }
     // var nb = '';
     // if(today <= moment().add(7,"days").format('YYYY-MM-DD')){
@@ -577,6 +577,15 @@ export default class Demo extends React.PureComponent {
                       {}
                   </div>
                   <text style={{fontSize:"7vmin", fontFamily:'Courier New'}}>WhereGotSlot</text>
+                  <div style={{width:70}}>
+                      {}
+                  </div>
+              </div>
+              <div style={buttons}>
+                  <div style={{width:70}}>
+                      {}
+                  </div>
+                  <text style={{fontSize:"3vmin", fontFamily:'Courier New'}}>&#8592; &#8592; &#8592; Swipe To Navigate Dates &#8594; &#8594; &#8594;</text>
                   <div style={{width:70}}>
                       {}
                   </div>
