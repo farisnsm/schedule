@@ -84,6 +84,7 @@ export default class Demo extends React.PureComponent {
             { text: 'LHC', id: 4, color: pink },
             { text: 'FB', id: 5, color: orange }
         ],
+        hour: moment().hour()-1,
         bw: true,
         bff:true,
         oyy:true,
@@ -121,12 +122,26 @@ export default class Demo extends React.PureComponent {
         week: [0,1,2,3,4,5,6].filter(D => D!==moment(this.state.today,'YYYY-MM-DD').add(1,"days").weekday()),
         today: moment(this.state.today,'YYYY-MM-DD').add(1,"days").format('YYYY-MM-DD')
     });
+    if(this.state.today === moment().add(-1,"days").format('YYYY-MM-DD')){
+        this.setState({
+            hour: moment().hour()-1
+        })
+    } else{
+        this.setState({hour:9})
+    }
   }
   prevdate(e) {
         this.setState({
             week: [0,1,2,3,4,5,6].filter(D => D!==moment(this.state.today,'YYYY-MM-DD').add(-1,"days").weekday()),
             today: moment(this.state.today,'YYYY-MM-DD').add(-1,"days").format('YYYY-MM-DD')
         });
+      if(this.state.today === moment().add(1,"days").format('YYYY-MM-DD')){
+          this.setState({
+              hour: moment().hour()-1
+          })
+      } else{
+          this.setState({hour:9})
+      }
     }
 
   handleChange(event) {
@@ -262,7 +277,7 @@ export default class Demo extends React.PureComponent {
 
   render() {
     const {
-      data, resources, grouping, groupByDate,today,week
+      data, resources, grouping, groupByDate,today,week,hour
     } = this.state;
     const mystyle = {
       display:"flex",
@@ -273,22 +288,30 @@ export default class Demo extends React.PureComponent {
         flexDirection:"row",
         justifyContent: "space-between"
     }
-    var d1 = [0,1,2,3,4,5,6].filter(D => D!==moment().weekday());
-    var d2 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(1,"days").weekday());
-    var d3 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(2,"days").weekday());
-    var d4 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(3,"days").weekday());
-    var d5 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(4,"days").weekday());
-    var d6 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(5,"days").weekday());
-    var d7 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(6,"days").weekday());
-    var d8 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(7,"days").weekday());
-    var w1 = moment().format('YYYY-MM-DD');
-    var w2 = moment().add(1,"days").format('YYYY-MM-DD');
-    var w3 = moment().add(2,"days").format('YYYY-MM-DD');
-    var w4 = moment().add(3,"days").format('YYYY-MM-DD');
-    var w5 = moment().add(4,"days").format('YYYY-MM-DD');
-    var w6 = moment().add(5,"days").format('YYYY-MM-DD');
-    var w7 = moment().add(6,"days").format('YYYY-MM-DD');
-    var w8 = moment().add(7,"days").format('YYYY-MM-DD');
+    var nb = '';
+    if(today <= moment().add(7,"days").format('YYYY-MM-DD')){
+        nb = <button style={{fontSize:"3vmin", fontFamily:'Courier New'}} onClick={this.nextdate}>{moment(today).add(1,"days").format("DD MMM")}<br/>&#8594; &#8594; &#8594;</button>
+    }
+    var bb ='';
+    if(today > moment().format('YYYY-MM-DD')){
+        bb =<button style={{fontSize:"3vmin", fontFamily:'Courier New'}} onClick={this.prevdate}>{moment(today).add(-1,"days").format("DD MMM")}<br/>&#8592; &#8592; &#8592;</button>
+    }
+    // var d1 = [0,1,2,3,4,5,6].filter(D => D!==moment().weekday());
+    // var d2 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(1,"days").weekday());
+    // var d3 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(2,"days").weekday());
+    // var d4 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(3,"days").weekday());
+    // var d5 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(4,"days").weekday());
+    // var d6 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(5,"days").weekday());
+    // var d7 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(6,"days").weekday());
+    // var d8 = [0,1,2,3,4,5,6].filter(D => D!==moment().add(7,"days").weekday());
+    // var w1 = moment().format('YYYY-MM-DD');
+    // var w2 = moment().add(1,"days").format('YYYY-MM-DD');
+    // var w3 = moment().add(2,"days").format('YYYY-MM-DD');
+    // var w4 = moment().add(3,"days").format('YYYY-MM-DD');
+    // var w5 = moment().add(4,"days").format('YYYY-MM-DD');
+    // var w6 = moment().add(5,"days").format('YYYY-MM-DD');
+    // var w7 = moment().add(6,"days").format('YYYY-MM-DD');
+    // var w8 = moment().add(7,"days").format('YYYY-MM-DD');
     // if(i_agree){
     //       return (
     //           <React.Fragment>
@@ -544,12 +567,17 @@ export default class Demo extends React.PureComponent {
     //           </React.Fragment>
     //       );
     //   }
+
       return (
           <React.Fragment>
               <div style={buttons}>
-                  <button style={{fontSize:"3vmin", fontFamily:'Courier New'}} onClick={this.prevdate}>{moment().add(-1,"days").format("DD MMM")}<br/>&#8592; &#8592; &#8592;</button>
+                  <div style={{width:70}}>
+                      {bb}
+                  </div>
                   <text style={{fontSize:"7vmin", fontFamily:'Courier New'}}>WhereGotSlot</text>
-                  <button style={{fontSize:"3vmin", fontFamily:'Courier New'}} onClick={this.nextdate}>{moment().add(1,"days").format("DD MMM")}<br/>&#8594; &#8594; &#8594;</button>
+                  <div style={{width:70}}>
+                      {nb}
+                  </div>
               </div>
               <br/>
               <div style = {buttons}>
@@ -605,7 +633,7 @@ export default class Demo extends React.PureComponent {
                               groupByDate={groupByDate}
                           />
                           <WeekView
-                              startDayHour={9}
+                              startDayHour={hour}
                               endDayHour={23}
                               excludedDays={week}
                           />
